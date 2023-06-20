@@ -238,19 +238,53 @@ color: red;
     
 }
 .ser-sec{
-display: flex;
+display: grid;
+grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+gap: 30px;
+grid-template-rows: auto auto;
+margin-top: 80px;
+padding: 0 50px;
+}
+.seri-1{
+    text-align: center;
+background-color: rgb(40, 39, 39);
+padding-top: 60px;
+border-radius: 10px;
 
 }
-#seri-1 i{
 
+.seri-1 i{
+color: crimson;
+font-size: 7rem;
+}
+.seri-1 h3{
+    font-size: 4rem;
+}
+.seri-1 p{
+    font-size: 2.5rem;
+    padding: 10px 60px;
+    margin-bottom: 50px;
+}
+.seri-1:hover {
+    transition: all .2s ease-in-out;
+ background-color: crimson;
+color: white;
+cursor: pointer;
+
+box-sizing: border-box;
 
 }
-#seri-2 i{
-
-    color: aqua;
-    background-color: brown;
+.seri-1:hover i{
+    transition: all .2s ease-in-out;
+color: white;
+transform: scale(1.06);
 }
-#seri-3 i{
-
-    
+.seri-1:hover h3{
+    transition: all .2s ease-in-out;
+    transform: scale(1.06);
 }
+.seri-1:hover p{
+    transition: all .2s ease-in-out;
+    transform: scale(1.06);
+}
+
