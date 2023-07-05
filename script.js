@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+const nanan = document.querySelector(".nav-part2");
 const arrr = ["Youtuber", "Developer", "Programmer"];
 let ttt = 1;
 setInterval(function () {
@@ -27,10 +28,11 @@ const c5 = document.querySelector(".color-0");
 const check = document.querySelector(".part-2");
 console.log(check);
 
-window.addEventListener("scroll", function (e) {
-  const initial = document.querySelector("#service--2").getBoundingClientRect();
-
-  if (initial.top < 0) {
+const initial = document.querySelector(".part-2");
+const fuunc = function (entries, observe) {
+  const [entry] = entries;
+  console.log(entry);
+  if (entry.isIntersecting) {
     c1.style.animationName = "ani";
     c2.style.animationName = "ani2";
     c3.style.animationName = "ani3";
@@ -46,8 +48,31 @@ window.addEventListener("scroll", function (e) {
     c3.style.width = "70%";
     c4.style.width = "75%";
     c5.style.width = "85%";
+  } else {
+    c1.style.animationName = "";
+    c2.style.animationName = "";
+    c3.style.animationName = "";
+    c4.style.animationName = "";
+    c5.style.animationName = "";
+    c1.style.animationDuration = "";
+    c2.style.animationDuration = "";
+    c3.style.animationDuration = "";
+    c4.style.animationDuration = "";
+    c5.style.animationDuration = "";
+    c1.style.width = "";
+    c2.style.width = "";
+    c3.style.width = "";
+    c4.style.width = "";
+    c5.style.width = "";
   }
+};
+
+const initiaObserve = new IntersectionObserver(fuunc, {
+  root: null,
+  threshold: 0.1,
 });
+initiaObserve.observe(initial);
+
 //sdsds
 const containers = document.querySelectorAll(".containe--item");
 console.log(containers);
@@ -154,4 +179,52 @@ button.addEventListener("click", function () {
 win.addEventListener("click", function () {
   special.classList.toggle("special-hidden");
   win.classList.toggle("overlay");
+});
+navLinks.forEach(function (item) {
+  item.addEventListener("click", function (e) {
+    e.preventDefault();
+    console.log("dfd");
+    nanan.style.left = "-1800px";
+    tttt = 1;
+    const element = e.target.getAttribute("href");
+
+    document.querySelector(`${element}`).scrollIntoView({
+      behavior: "smooth",
+    });
+  });
+});
+//change up-btn
+const ser = document.querySelector("#about");
+const it = document.querySelector(".up-btn");
+const fo = function (entrience, obsrever) {
+  const [entry] = entrience;
+  if (!entry.isIntersecting) {
+    it.classList.remove("b-hidden");
+  } else {
+    it.classList.add("b-hidden");
+  }
+};
+
+const obs = new IntersectionObserver(fo, {
+  root: null,
+
+  threshold: 0,
+});
+obs.observe(ser);
+it.addEventListener("click", function () {
+  document.querySelector("#Home").scrollIntoView({
+    behavior: "smooth",
+  });
+});
+//button icon
+const iconbtn = document.querySelector("#btn-icon");
+let tttt = 1;
+iconbtn.addEventListener("click", function () {
+  if (tttt == 0) {
+    tttt = 1;
+    nanan.style.left = "-1800px";
+  } else if (tttt == 1) {
+    tttt = 0;
+    nanan.style.left = "0";
+  }
 });
